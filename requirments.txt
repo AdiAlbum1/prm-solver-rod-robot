@@ -1,0 +1,24 @@
+backports.entry-points-selectable==1.1.1
+certifi==2021.5.30
+CGALPY @ file:///D:/Algorithmic%20Robotics%20and%20Motion%20Planning/Ex3/rod_DiscoPygal/bindings
+charset-normalizer==2.0.6
+distlib==0.3.3
+filelock==3.4.0
+idna==3.2
+joblib==1.0.1
+networkx==2.6.3
+numpy==1.21.2
+pipenv==2021.11.15
+platformdirs==2.4.0
+PyQt5==5.15.4
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.9.0
+requests==2.26.0
+-e git+https://github.com/AdiAlbum1/rod_DiscoPygal@6f08e4dd335b09f2dff146b06ab5b6cff846bb40#egg=rmp
+scikit-learn==1.0
+scipy==1.7.1
+six==1.16.0
+threadpoolctl==3.0.0
+urllib3==1.26.7
+virtualenv==20.10.0
+virtualenv-clone==0.5.7
