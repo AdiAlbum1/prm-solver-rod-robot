@@ -1,0 +1,1537 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="scene_designer package" href="scene_designer.html" /><link rel="prev" title="python_rmp_framework" href="modules.html" />
+
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
+        <title>gui package - RMP Framework 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">RMP Framework 1.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">RMP Framework 1.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">python_rmp_framework</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">gui package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scene_designer.html">scene_designer package</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="gui-package">
+<h1>gui package<a class="headerlink" href="#gui-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-gui.GraphicsScenePlus">
+<span id="gui-graphicssceneplus-module"></span><h2>gui.GraphicsScenePlus module<a class="headerlink" href="#module-gui.GraphicsScenePlus" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.GraphicsScenePlus.GraphicsScenePlus">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.GraphicsScenePlus.</span></span><span class="sig-name descname"><span class="pre">GraphicsScenePlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gui</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.GraphicsScenePlus.GraphicsScenePlus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QGraphicsScene</span></code></p>
+<p>Extender for Qt’s QGraphicsScene
+Add support for general useful capabilities which are not supported
+natively for QGraphicsScene</p>
+<p>Adding signals for mouse (left and right) clicks, and scroll for zoom in/out</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.GraphicsScenePlus.GraphicsScenePlus.left_click_signal">
+<span class="sig-name descname"><span class="pre">left_click_signal</span></span><a class="headerlink" href="#gui.GraphicsScenePlus.GraphicsScenePlus.left_click_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signal when user left mouse clicks the graphics view</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.GraphicsScenePlus.GraphicsScenePlus.mousePressEvent">
+<span class="sig-name descname"><span class="pre">mousePressEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.GraphicsScenePlus.GraphicsScenePlus.mousePressEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle mouse (left or right) press events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QEvent</em>) – mouse press event</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.GraphicsScenePlus.GraphicsScenePlus.right_click_signal">
+<span class="sig-name descname"><span class="pre">right_click_signal</span></span><a class="headerlink" href="#gui.GraphicsScenePlus.GraphicsScenePlus.right_click_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signal when user right mouse clicks the graphics view</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.GraphicsScenePlus.GraphicsScenePlus.wheelEvent">
+<span class="sig-name descname"><span class="pre">wheelEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.GraphicsScenePlus.GraphicsScenePlus.wheelEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle mouse wheel events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QEvent</em>) – mouse wheel event</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.MainWindowsPlus">
+<span id="gui-mainwindowsplus-module"></span><h2>gui.MainWindowsPlus module<a class="headerlink" href="#module-gui.MainWindowsPlus" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.MainWindowsPlus.MainWindowPlus">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.MainWindowsPlus.</span></span><span class="sig-name descname"><span class="pre">MainWindowPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gui</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.MainWindowsPlus.MainWindowPlus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QMainWindow</span></code></p>
+<p>Extender for Qt’s QMainWindow
+Add support for general useful capabilities which are not supported
+natively for QMainWindow</p>
+<p>Adding file dragging capability and +/- keys for zoom in/out</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.MainWindowsPlus.MainWindowPlus.dragEnterEvent">
+<span class="sig-name descname"><span class="pre">dragEnterEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.MainWindowsPlus.MainWindowPlus.dragEnterEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle drag enter events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QEvent</em>) – drag enter event</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.MainWindowsPlus.MainWindowPlus.dragMoveEvent">
+<span class="sig-name descname"><span class="pre">dragMoveEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.MainWindowsPlus.MainWindowPlus.dragMoveEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle drag move events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QEvent</em>) – drag move event</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.MainWindowsPlus.MainWindowPlus.dropEvent">
+<span class="sig-name descname"><span class="pre">dropEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.MainWindowsPlus.MainWindowPlus.dropEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle drog events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QEvent</em>) – drop event</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.MainWindowsPlus.MainWindowPlus.keyPressEvent">
+<span class="sig-name descname"><span class="pre">keyPressEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.MainWindowsPlus.MainWindowPlus.keyPressEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle key press events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QEvent</em>) – key press event</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.MainWindowsPlus.MainWindowPlus.signal_drop">
+<span class="sig-name descname"><span class="pre">signal_drop</span></span><a class="headerlink" href="#gui.MainWindowsPlus.MainWindowPlus.signal_drop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signal when user drags a file to the app</p>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.RCircleSegment">
+<span id="gui-rcirclesegment-module"></span><h2>gui.RCircleSegment module<a class="headerlink" href="#module-gui.RCircleSegment" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.RCircleSegment.RCircleSegment">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.RCircleSegment.</span></span><span class="sig-name descname"><span class="pre">RCircleSegment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clockwise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">19</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.RCircleSegment.RCircleSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>A class that represents a circle segment on screen (as a Qt5 object)
+A circle segment is a non-linear connected curve that is contained in some circle
+In this representation, it is made of a circle plus start and end angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float</em>) – radius of circle</p></li>
+<li><p><strong>center_x</strong> (<em>float</em>) – x position of circle center</p></li>
+<li><p><strong>center_y</strong> (<em>float</em>) – y position of circle center</p></li>
+<li><p><strong>start_angle</strong> (<em>float</em>) – start angle of circle segment</p></li>
+<li><p><strong>end_angle</strong> (<em>float</em>) – end angle of circle segment</p></li>
+<li><p><strong>clockwise</strong> (<em>bool</em>) – draw from start to end clockwise or counter-clockwise</p></li>
+<li><p><strong>line_width</strong> (<em>int</em>) – width of the boundary of the circle segment</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the circle segment</p></li>
+<li><p><strong>fill_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of circle</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RCircleSegment.RCircleSegment.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><a class="headerlink" href="#gui.RCircleSegment.RCircleSegment.visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the visibility of the circle segment
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – visibility of the circle segment</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.RDisc">
+<span id="gui-rdisc-module"></span><h2>gui.RDisc module<a class="headerlink" href="#module-gui.RDisc" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.RDisc.RDisc">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.RDisc.</span></span><span class="sig-name descname"><span class="pre">RDisc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.RDisc.RDisc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>A class that represents a disc on screen (as a Qt5 object)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>float</em>) – radius of disc</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x location of disc</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y location of disc</p></li>
+<li><p><strong>color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of disc</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the boundary of disc</p></li>
+<li><p><strong>line_width</strong> (<em>int</em>) – width of the boundary of disc</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RDisc.RDisc.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#gui.RDisc.RDisc.pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the position of the disc
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>position of the disc</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QPointF</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RDisc.RDisc.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><a class="headerlink" href="#gui.RDisc.RDisc.visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the visibility of the disc
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>visibility of the disc</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RDisc.RDisc.x">
+<span class="sig-name descname"><span class="pre">x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RDisc.RDisc.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return x position of the center of disc</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>x position of the center of disc</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RDisc.RDisc.y">
+<span class="sig-name descname"><span class="pre">y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RDisc.RDisc.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return y position of the center of disc</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>y position of the center of disc</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.RDiscRobot">
+<span id="gui-rdiscrobot-module"></span><h2>gui.RDiscRobot module<a class="headerlink" href="#module-gui.RDiscRobot" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.RDiscRobot.RDiscRobot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.RDiscRobot.</span></span><span class="sig-name descname"><span class="pre">RDiscRobot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.RDiscRobot.RDiscRobot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>A class that represents a disc robot on screen (as a Qt5 object)
+Similar to RDisc, but has text description (number) capability</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>float</em>) – radius of disc</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x location of disc</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y location of disc</p></li>
+<li><p><strong>color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of disc</p></li>
+<li><p><strong>line_width</strong> (<em>int</em>) – width of the boundary of disc</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – the text description (number) of the robot</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RDiscRobot.RDiscRobot.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#gui.RDiscRobot.RDiscRobot.pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the position of the disc robot
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>position of the disc</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QPointF</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RDiscRobot.RDiscRobot.set_text">
+<span class="sig-name descname"><span class="pre">set_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.RDiscRobot.RDiscRobot.set_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the robot’s text description (number)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – robot text description</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RDiscRobot.RDiscRobot.text">
+<span class="sig-name descname"><span class="pre">text</span></span><a class="headerlink" href="#gui.RDiscRobot.RDiscRobot.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the robot’s text description (number)
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>robot text description</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RDiscRobot.RDiscRobot.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><a class="headerlink" href="#gui.RDiscRobot.RDiscRobot.visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the visibility of the disc
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – visibility of the disc</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RDiscRobot.RDiscRobot.x">
+<span class="sig-name descname"><span class="pre">x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#gui.RDiscRobot.RDiscRobot.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return x position of the center of disc robot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>x position of the center of disc robot</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RDiscRobot.RDiscRobot.y">
+<span class="sig-name descname"><span class="pre">y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#gui.RDiscRobot.RDiscRobot.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return y position of the center of disc robot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>y position of the center of disc robot</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.RPolygon">
+<span id="gui-rpolygon-module"></span><h2>gui.RPolygon module<a class="headerlink" href="#module-gui.RPolygon" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.RPolygon.RPolygon">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.RPolygon.</span></span><span class="sig-name descname"><span class="pre">RPolygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.RPolygon.RPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>A class that represents a polygon on screen (as a Qt5 object)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>list&lt;tuple&gt;</em>) – list of points of the polygon</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the boundary of polygon</p></li>
+<li><p><strong>fill_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of polygon</p></li>
+<li><p><strong>line_width</strong> (<em>int</em>) – width of the boundary of polygon</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RPolygon.RPolygon.points">
+<span class="sig-name descname"><span class="pre">points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RPolygon.RPolygon.points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of polygon’s vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list polygon vertices</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list&lt;QPointF&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RPolygon.RPolygon.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#gui.RPolygon.RPolygon.pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the position of the first vertex of polygon
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>position of the first vertex of polygon</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QPointF</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RPolygon.RPolygon.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><a class="headerlink" href="#gui.RPolygon.RPolygon.visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the visibility of the polygon
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>visibility of the polygon</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RPolygon.RPolygon.x">
+<span class="sig-name descname"><span class="pre">x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RPolygon.RPolygon.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return x position of the first vertex in polygon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>x position of the first vertex in polygon</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RPolygon.RPolygon.y">
+<span class="sig-name descname"><span class="pre">y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RPolygon.RPolygon.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return y position of the first vertex in polygon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>y position of the first vertex in polygon</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.RSegment">
+<span id="gui-rsegment-module"></span><h2>gui.RSegment module<a class="headerlink" href="#module-gui.RSegment" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.RSegment.RSegment">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.RSegment.</span></span><span class="sig-name descname"><span class="pre">RSegment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.RSegment.RSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>A class that represents a linear segment on screen (as a Qt5 object)
+The segment is defined with its start and end positions of endpoints
+(Instead of start position, length and angle like in RSegment_angle)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – x position of start endpoint</p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – y position of start endpoint</p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – x position of end endpoint</p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – y position of end endpoint</p></li>
+<li><p><strong>color</strong> (class:<cite>QtGui.QColor</cite>) – color of the segment</p></li>
+<li><p><strong>line_width</strong> (<em>int</em>) – width of segment</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RSegment.RSegment.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#gui.RSegment.RSegment.pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the position of start endpoint of segment
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>position of start endpoint of segment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QPointF</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RSegment.RSegment.x">
+<span class="sig-name descname"><span class="pre">x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RSegment.RSegment.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return x position of the start endpoint of segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>x position of the start endpoint of segment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RSegment.RSegment.y">
+<span class="sig-name descname"><span class="pre">y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RSegment.RSegment.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return y position of the start endpoint of segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>y position of the start endpoint of segment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.RSegment_angle">
+<span id="gui-rsegment-angle-module"></span><h2>gui.RSegment_angle module<a class="headerlink" href="#module-gui.RSegment_angle" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.RSegment_angle.RSegment_angle">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.RSegment_angle.</span></span><span class="sig-name descname"><span class="pre">RSegment_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.RSegment_angle.RSegment_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>A class that represents an angled linear segment on screen (as a Qt5 object)
+The segment is defined with its start position, its length and the angle
+(Instead of start and end position like in RSegment)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – x position of start endpoint</p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – y position of start endpoint</p></li>
+<li><p><strong>l</strong> (<em>float</em>) – length of the segment</p></li>
+<li><p><strong>a</strong> (<em>float</em>) – angle (in radians) af the segment</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the segment</p></li>
+<li><p><strong>line_width</strong> (<em>int</em>) – width of segment</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RSegment_angle.RSegment_angle.angle">
+<span class="sig-name descname"><span class="pre">angle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RSegment_angle.RSegment_angle.angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the angle of the segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>angle of segment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RSegment_angle.RSegment_angle.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#gui.RSegment_angle.RSegment_angle.pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the representation of the position of segment
+The segment is represented as (x, y, angle) - a 3D vector
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>position representation of the segment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>QVector3D</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RSegment_angle.RSegment_angle.x">
+<span class="sig-name descname"><span class="pre">x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RSegment_angle.RSegment_angle.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return x position of the start endpoint of segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>x position of the start endpoint of segment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.RSegment_angle.RSegment_angle.y">
+<span class="sig-name descname"><span class="pre">y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.RSegment_angle.RSegment_angle.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return y position of the start endpoint of segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>y position of the start endpoint of segment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.RText">
+<span id="gui-rtext-module"></span><h2>gui.RText module<a class="headerlink" href="#module-gui.RText" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.RText.RText">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.RText.</span></span><span class="sig-name descname"><span class="pre">RText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.RText.RText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>A class that represents a text label on screen (as a Qt5 object)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – text label</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x position of text label</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y position of text label</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – size of label</p></li>
+<li><p><strong>color</strong> (class:<cite>QtGui.QColor</cite>) – color of the label</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.RText.RText.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><a class="headerlink" href="#gui.RText.RText.visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the visibility of the label
+(Required for animation support by Qt5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – visibility of the label</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.Worker">
+<span id="gui-worker-module"></span><h2>gui.Worker module<a class="headerlink" href="#module-gui.Worker" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.Worker.Worker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.Worker.</span></span><span class="sig-name descname"><span class="pre">Worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.Worker.Worker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QRunnable</span></code></p>
+<p>Task worker that can run a function in parallel to GUI.
+Function’s result is returned in the <cite>finished</cite> signal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> (<em>function</em><em>(</em><em>...</em><em>-&gt;object</em><em>)</em>) – function that the worker runs</p></li>
+<li><p><strong>*args</strong> – <p>arguments to be passed to function</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.Worker.Worker.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.Worker.Worker.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialise the runner function with passed args, kwargs.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.Worker.Worker.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.Worker.Worker.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the current task</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.Worker.WorkerSignals">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.Worker.</span></span><span class="sig-name descname"><span class="pre">WorkerSignals</span></span><a class="headerlink" href="#gui.Worker.WorkerSignals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>Struct of all signals required by a Worker</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.Worker.WorkerSignals.finished">
+<span class="sig-name descname"><span class="pre">finished</span></span><a class="headerlink" href="#gui.Worker.WorkerSignals.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signal that is fired when worker task is finished, has also the task output</p>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.gui">
+<span id="gui-gui-module"></span><h2>gui.gui module<a class="headerlink" href="#module-gui.gui" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.gui.GUI">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.gui.</span></span><span class="sig-name descname"><span class="pre">GUI</span></span><a class="headerlink" href="#gui.gui.GUI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The RMP GUI class, handles all the boilerplate code for having GUI capable Qt projects</p>
+<p>Any GUI application should derive from this class, and set somewhere in the layout the
+property <cite>graphicsView</cite> to a QGraphicsView.
+The function you should override in this case is setupUi()</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.add_circle_segment">
+<span class="sig-name descname"><span class="pre">add_circle_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clockwise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">19</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.add_circle_segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a circle segment to the scene and return the object associated with it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float</em>) – radius of circle</p></li>
+<li><p><strong>center_x</strong> (<em>float</em>) – x position of circle center</p></li>
+<li><p><strong>center_y</strong> (<em>float</em>) – y position of circle center</p></li>
+<li><p><strong>start_angle</strong> (<em>float</em>) – start angle of circle segment</p></li>
+<li><p><strong>end_angle</strong> (<em>float</em>) – end angle of circle segment</p></li>
+<li><p><strong>clockwise</strong> (<em>bool</em>) – draw from start to end clockwise or counter-clockwise</p></li>
+<li><p><strong>fill_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of circle</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the circle segment</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>circle segment</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#gui.RCircleSegment.RCircleSegment" title="gui.RCircleSegment.RCircleSegment">RCircleSegment</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.add_disc">
+<span class="sig-name descname"><span class="pre">add_disc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.add_disc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a disc to the scene with radius r centered at (x, y) and return the object associated with it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>float</em>) – radius of disc</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x position of center of disc</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y position of center of disc</p></li>
+<li><p><strong>fill_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of disc</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the boundary of disc</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>disc</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#gui.RDisc.RDisc" title="gui.RDisc.RDisc">RDisc</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.add_disc_robot">
+<span class="sig-name descname"><span class="pre">add_disc_robot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.add_disc_robot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a disc robot to the scene with radius r centered at (x, y) and return the object associated with it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>float</em>) – radius of disc</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x position of center of disc</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y position of center of disc</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – label of the robot</p></li>
+<li><p><strong>fill_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of disc</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>disc robot</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#gui.RDiscRobot.RDiscRobot" title="gui.RDiscRobot.RDiscRobot">RDiscRobot</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.add_polygon">
+<span class="sig-name descname"><span class="pre">add_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.add_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a polygon to the scene and return the object associated with it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>list&lt;tuple&gt;</em>) – list of points of polygon</p></li>
+<li><p><strong>fill_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of polygon</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the boundary of polygon</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>polygon</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#gui.RPolygon.RPolygon" title="gui.RPolygon.RPolygon">RPolygon</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.add_polygon_with_holes">
+<span class="sig-name descname"><span class="pre">add_polygon_with_holes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">holes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">19</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.add_polygon_with_holes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a polygon with holes to the scene and return the object associated with it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>list&lt;tuple&gt;</em>) – list of points of polygon</p></li>
+<li><p><strong>holes</strong> (<em>list&lt;list&lt;tuple&gt;&gt;</em>) – list of holes, each hole is a list of points</p></li>
+<li><p><strong>fill_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the interior of polygon</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the boundary of polygon</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>polygon</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>RPolygonWithHoles</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.add_segment">
+<span class="sig-name descname"><span class="pre">add_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.add_segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a segment to the scene and return the object associated with it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – x1 position of start endpoint</p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – y1 position of start endpoint</p></li>
+<li><p><strong>x2</strong> (<em>float</em>) – x2 position of end endpoint</p></li>
+<li><p><strong>y2</strong> (<em>float</em>) – y2 position of end endpoint</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the segment</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>segment</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#gui.RSegment.RSegment" title="gui.RSegment.RSegment">RSegment</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.add_segment_angle">
+<span class="sig-name descname"><span class="pre">add_segment_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.add_segment_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an angled segment to the scene and return the object associated with it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em>) – x1 position of start endpoint</p></li>
+<li><p><strong>y1</strong> (<em>float</em>) – y1 position of start endpoint</p></li>
+<li><p><strong>length</strong> (<em>float</em>) – length of segment</p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – angle (in radians) of segment</p></li>
+<li><p><strong>line_color</strong> (class:<cite>QtGui.QColor</cite>) – color of the segment</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>angled segment</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#gui.RSegment_angle.RSegment_angle" title="gui.RSegment_angle.RSegment_angle">RSegment_angle</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.add_text">
+<span class="sig-name descname"><span class="pre">add_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.add_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a text label to the scene and return the object associated with it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – text label</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x position of text label</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y position of text label</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – size of label</p></li>
+<li><p><strong>color</strong> (class:<cite>QtGui.QColor</cite>) – color of the label</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>text label</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#gui.RText.RText" title="gui.RText.RText">RText</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.animation_finished">
+<span class="sig-name descname"><span class="pre">animation_finished</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.animation_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that is called when the <cite>finished</cite> signal is fired
+Empties the queue and calls the finished action defined by the program</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.animation_finished_action">
+<span class="sig-name descname"><span class="pre">animation_finished_action</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.animation_finished_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function reference that is called when animation is finished</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.base_line_width">
+<span class="sig-name descname"><span class="pre">base_line_width</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3.5</span></em><a class="headerlink" href="#gui.gui.GUI.base_line_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base (default) line width</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.base_text_size">
+<span class="sig-name descname"><span class="pre">base_text_size</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2.0</span></em><a class="headerlink" href="#gui.gui.GUI.base_text_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base (default) text size</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.clear_scene">
+<span class="sig-name descname"><span class="pre">clear_scene</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.clear_scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the scene of all objects</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.empty_queue">
+<span class="sig-name descname"><span class="pre">empty_queue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.empty_queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty the animation queue queue</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.get_field">
+<span class="sig-name descname"><span class="pre">get_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.get_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the text of field with key &lt;key&gt; in the GUI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – key of line edit</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>text of selected line edit</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.graphicsView">
+<span class="sig-name descname"><span class="pre">graphicsView</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#gui.gui.GUI.graphicsView" title="Permalink to this definition">¶</a></dt>
+<dd><p>QGraphicsView widget where everything is drawn</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.height">
+<span class="sig-name descname"><span class="pre">height</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1000</span></em><a class="headerlink" href="#gui.gui.GUI.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Screen height</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#gui.gui.GUI.labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of all UI labels</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.lineEdits">
+<span class="sig-name descname"><span class="pre">lineEdits</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#gui.gui.GUI.lineEdits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of all UI line inputs</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.linear_translation_animation">
+<span class="sig-name descname"><span class="pre">linear_translation_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.linear_translation_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new linear translation animation for obj starting at ix, iy and ending at x, y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>QObject</em>) – object to animate</p></li>
+<li><p><strong>ix</strong> (<em>float</em>) – x position of start</p></li>
+<li><p><strong>iy</strong> (<em>float</em>) – y position of start</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x position of end</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y position of end</p></li>
+<li><p><strong>duration</strong> (<em>int</em>) – duration of animation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>animation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPropertyAnimation</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.mainWindow">
+<span class="sig-name descname"><span class="pre">mainWindow</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#gui.gui.GUI.mainWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>MainWindowPlus main window</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.parallel_animation">
+<span class="sig-name descname"><span class="pre">parallel_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">animations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.parallel_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an animation from a set of animations that will run in parallel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*animations</strong> – <p>the animations we want to run in parallel</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>parallel animation group object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QParallelAnimationGroup</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.pause_animation">
+<span class="sig-name descname"><span class="pre">pause_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.pause_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an animation that does nothing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>duration</strong> (<em>int</em>) – duration of animation</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>animation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPropertyAnimation</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.play_queue">
+<span class="sig-name descname"><span class="pre">play_queue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.play_queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Play (and empty) the animation queue</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.progressBars">
+<span class="sig-name descname"><span class="pre">progressBars</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#gui.gui.GUI.progressBars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of all UI progress bars</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.pushButtons">
+<span class="sig-name descname"><span class="pre">pushButtons</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#gui.gui.GUI.pushButtons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of all UI push buttons</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.queue_animation">
+<span class="sig-name descname"><span class="pre">queue_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">animations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.queue_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an animation to the animation queue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*animations</strong> – <p>the animations we want to add to queue</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.redraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redraw the scene with updated parameters</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.scene">
+<span class="sig-name descname"><span class="pre">scene</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#gui.gui.GUI.scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>GraphicsScenePlus scene that contains all the objects</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.segment_angle_animation">
+<span class="sig-name descname"><span class="pre">segment_angle_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ia</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clockwise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.segment_angle_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an animation for angle segment starting at ix, iy with angle ia ending at x, y, angle a</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>QObject</em>) – object to animate</p></li>
+<li><p><strong>ix</strong> (<em>float</em>) – x position of start segment</p></li>
+<li><p><strong>iy</strong> (<em>float</em>) – y position of start segment</p></li>
+<li><p><strong>ia</strong> (<em>float</em>) – rotation of the start segment</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x position of end segment</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y position of end segment</p></li>
+<li><p><strong>a</strong> (<em>float</em>) – rotation of the end segment</p></li>
+<li><p><strong>clockwise</strong> (<em>bool</em>) – rotate the segment clocwise</p></li>
+<li><p><strong>duration</strong> (<em>int</em>) – duration of animation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>animation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPropertyAnimation</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.sequence">
+<span class="sig-name descname"><span class="pre">sequence</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#gui.gui.GUI.sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>QSequentialAnimationGroup sequence of animation</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.set_animation_finished_action">
+<span class="sig-name descname"><span class="pre">set_animation_finished_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.set_animation_finished_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the function to be called when the animation finishes playing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>action</strong> (<em>function&lt;</em><em>(</em><em>)</em><em>-&gt;</em><em>(</em><em>)</em><em>&gt;</em>) – action to be called when animation finished</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.set_button_text">
+<span class="sig-name descname"><span class="pre">set_button_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.set_button_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the text of the button with key &lt;key&gt; in the GUI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – key of the pushbutton</p></li>
+<li><p><strong>s</strong> (<em>str</em>) – new label of pushbutton</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.set_field">
+<span class="sig-name descname"><span class="pre">set_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.set_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the text of field with key &lt;key&gt; in the GUI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – key of line edit</p></li>
+<li><p><strong>s</strong> (<em>str</em>) – new text for line edit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.set_label">
+<span class="sig-name descname"><span class="pre">set_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.set_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the text of label with key &lt;key&gt; in the GUI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – key of label</p></li>
+<li><p><strong>s</strong> (<em>str</em>) – new label text</p></li>
+<li><p><strong>color</strong> (<em>QColor</em>) – color of label</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.set_logic">
+<span class="sig-name descname"><span class="pre">set_logic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logic</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.set_logic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the function to be called when the button with key &lt;key&gt; in the GUI is pressed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – key of pushbutton</p></li>
+<li><p><strong>logic</strong> (<em>function&lt;</em><em>(</em><em>)</em><em>-&gt;</em><em>(</em><em>)</em><em>&gt;</em>) – function that is connected to the button</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.set_program_name">
+<span class="sig-name descname"><span class="pre">set_program_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.set_program_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the program’s name (title of the window)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – new window title</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.set_progressbar_value">
+<span class="sig-name descname"><span class="pre">set_progressbar_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.set_progressbar_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the value of the progressBar with key &lt;key&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – key of the progress bar</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – value of the progress bar</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.setupUi">
+<span class="sig-name descname"><span class="pre">setupUi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.setupUi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup the UI layout of the application. 
+Should be overrided by any GUI application and define a custom layout.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.stop_queue">
+<span class="sig-name descname"><span class="pre">stop_queue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.stop_queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop (and empty) the animation queue</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.text_animation">
+<span class="sig-name descname"><span class="pre">text_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.text_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an animation that changes the text of an object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>QObject</em>) – object to animate</p></li>
+<li><p><strong>text</strong> (<em>int</em>) – the new label we want to set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>animation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPropertyAnimation</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.translation_animation">
+<span class="sig-name descname"><span class="pre">translation_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.translation_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a general translation animation for obj. func is path from the unit interval I to R^2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>QObject</em>) – object to animate</p></li>
+<li><p><strong>func</strong> (<em>function&lt;I-&gt;R^2&gt;</em>) – a functino representing a path from unit interal I to R^2</p></li>
+<li><p><strong>duration</strong> (<em>int</em>) – duration of animation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>animation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPropertyAnimation</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.value_animation">
+<span class="sig-name descname"><span class="pre">value_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_begin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.value_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an animation that changes the value of an object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>QObject</em>) – object to animate</p></li>
+<li><p><strong>v_begin</strong> (<em>object</em>) – the start value of the object</p></li>
+<li><p><strong>v_end</strong> (<em>object</em>) – the end value of the object</p></li>
+<li><p><strong>duration</strong> (<em>int</em>) – duration of animation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>animation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPropertyAnimation</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.gui.GUI.visibility_animation">
+<span class="sig-name descname"><span class="pre">visibility_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visible</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.gui.GUI.visibility_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an animation the changes the visibility of an object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>QObject</em>) – object to animate</p></li>
+<li><p><strong>visible</strong> (<em>bool</em>) – the visibility we wat to set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>animation object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>QPropertyAnimation</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.width">
+<span class="sig-name descname"><span class="pre">width</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1600</span></em><a class="headerlink" href="#gui.gui.GUI.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Screen width</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.gui.GUI.zoom">
+<span class="sig-name descname"><span class="pre">zoom</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1.0</span></em><a class="headerlink" href="#gui.gui.GUI.zoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>View zoom</p>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui.logger">
+<span id="gui-logger-module"></span><h2>gui.logger module<a class="headerlink" href="#module-gui.logger" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.logger.Logger">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.logger.</span></span><span class="sig-name descname"><span class="pre">Logger</span></span><a class="headerlink" href="#gui.logger.Logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QTextEdit</span></code></p>
+<p>Widget class that represents a GUI log window in the app
+You can append text to the log in different colors</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.logger.Logger.append_text">
+<span class="sig-name descname"><span class="pre">append_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.logger.Logger.append_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append text the the bottom of the log.
+The appended text’s color will be the one selected in the
+<cite>color</cite> brush member of the widget</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em>) – new text to append</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.logger.Logger.color">
+<span class="sig-name descname"><span class="pre">color</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;PyQt5.QtGui.QBrush</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#gui.logger.Logger.color" title="Permalink to this definition">¶</a></dt>
+<dd><p>color of the text that will be drawn next</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.logger.Logger.set_color">
+<span class="sig-name descname"><span class="pre">set_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.logger.Logger.set_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the drawing color of the text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>QColor</em>) – new color</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.logger.Writer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gui.logger.</span></span><span class="sig-name descname"><span class="pre">Writer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#gui.logger.Logger" title="gui.logger.Logger"><span class="pre">gui.logger.Logger</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.logger.Writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>A QObject that handles writing to the logger widget</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference internal" href="#gui.logger.Logger" title="gui.logger.Logger"><em>Logger</em></a>) – logger widget reference</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.logger.Writer.append_text_signal">
+<span class="sig-name descname"><span class="pre">append_text_signal</span></span><a class="headerlink" href="#gui.logger.Writer.append_text_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signal that is fired when text is appended to the logger</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gui.logger.Writer.change_color_signal">
+<span class="sig-name descname"><span class="pre">change_color_signal</span></span><a class="headerlink" href="#gui.logger.Writer.change_color_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signal that is fired when brush color is changed</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.logger.Writer.set_color">
+<span class="sig-name descname"><span class="pre">set_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.logger.Writer.set_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the brush color of the logger, and emit a signal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>QColor</em>) – brush color of the logger</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.logger.Writer.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gui.logger.Writer.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write text into the logger, and emit a signal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em>) – new text to append</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-gui">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gui" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="scene_designer.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">scene_designer package</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="modules.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">python_rmp_framework</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, TAU CGL |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
+            <a class="muted-link" href="_sources/gui.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">gui package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-gui.GraphicsScenePlus">gui.GraphicsScenePlus module</a></li>
+<li><a class="reference internal" href="#module-gui.MainWindowsPlus">gui.MainWindowsPlus module</a></li>
+<li><a class="reference internal" href="#module-gui.RCircleSegment">gui.RCircleSegment module</a></li>
+<li><a class="reference internal" href="#module-gui.RDisc">gui.RDisc module</a></li>
+<li><a class="reference internal" href="#module-gui.RDiscRobot">gui.RDiscRobot module</a></li>
+<li><a class="reference internal" href="#module-gui.RPolygon">gui.RPolygon module</a></li>
+<li><a class="reference internal" href="#module-gui.RSegment">gui.RSegment module</a></li>
+<li><a class="reference internal" href="#module-gui.RSegment_angle">gui.RSegment_angle module</a></li>
+<li><a class="reference internal" href="#module-gui.RText">gui.RText module</a></li>
+<li><a class="reference internal" href="#module-gui.Worker">gui.Worker module</a></li>
+<li><a class="reference internal" href="#module-gui.gui">gui.gui module</a></li>
+<li><a class="reference internal" href="#module-gui.logger">gui.logger module</a></li>
+<li><a class="reference internal" href="#module-gui">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/main.js"></script>
+    </body>
+</html>

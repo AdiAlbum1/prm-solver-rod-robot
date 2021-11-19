@@ -1,0 +1,77 @@
+rod package
+===========
+
+Submodules
+----------
+
+rod.Polygons\_scene module
+--------------------------
+
+.. automodule:: rod.Polygons_scene
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rod.bindings module
+-------------------
+
+.. automodule:: rod.bindings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rod.conversions module
+----------------------
+
+.. automodule:: rod.conversions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rod.gui\_rod module
+-------------------
+
+.. automodule:: rod.gui_rod
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rod.my\_distance module
+-----------------------
+
+.. automodule:: rod.my_distance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rod.read\_input module
+----------------------
+
+.. automodule:: rod.read_input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rod.rod module
+--------------
+
+.. automodule:: rod.rod
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rod.sample\_polygons module
+---------------------------
+
+.. automodule:: rod.sample_polygons
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: rod
+   :members:
+   :undoc-members:
+   :show-inheritance:

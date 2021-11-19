@@ -1,0 +1,18 @@
+python\_rmp\_framework package
+==============================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   python_rmp_framework.gui
+
+Module contents
+---------------
+
+.. automodule:: python_rmp_framework
+   :members:
+   :undoc-members:
+   :show-inheritance:

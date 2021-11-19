@@ -1,0 +1,101 @@
+robot\_mp\_workshop package
+===========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   robot_mp_workshop.solvers
+
+Submodules
+----------
+
+robot\_mp\_workshop.Collision\_detection module
+-----------------------------------------------
+
+.. automodule:: robot_mp_workshop.Collision_detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.Scene module
+--------------------------------
+
+.. automodule:: robot_mp_workshop.Scene
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.approximate\_cspace module
+----------------------------------------------
+
+.. automodule:: robot_mp_workshop.approximate_cspace
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.bindings module
+-----------------------------------
+
+.. automodule:: robot_mp_workshop.bindings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.conversions module
+--------------------------------------
+
+.. automodule:: robot_mp_workshop.conversions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.copy\_list module
+-------------------------------------
+
+.. automodule:: robot_mp_workshop.copy_list
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.game module
+-------------------------------
+
+.. automodule:: robot_mp_workshop.game
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.gui\_mp\_workshop module
+--------------------------------------------
+
+.. automodule:: robot_mp_workshop.gui_mp_workshop
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.motion\_planner module
+------------------------------------------
+
+.. automodule:: robot_mp_workshop.motion_planner
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+robot\_mp\_workshop.read\_input module
+--------------------------------------
+
+.. automodule:: robot_mp_workshop.read_input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: robot_mp_workshop
+   :members:
+   :undoc-members:
+   :show-inheritance:

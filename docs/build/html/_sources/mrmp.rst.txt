@@ -1,0 +1,101 @@
+mrmp package
+============
+
+Submodules
+----------
+
+mrmp.Collision\_detection module
+--------------------------------
+
+.. automodule:: mrmp.Collision_detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.SceneBase module
+---------------------
+
+.. automodule:: mrmp.SceneBase
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.SceneDisc module
+---------------------
+
+.. automodule:: mrmp.SceneDisc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.ScenePolygon module
+------------------------
+
+.. automodule:: mrmp.ScenePolygon
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.bindings module
+--------------------
+
+.. automodule:: mrmp.bindings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.conversions module
+-----------------------
+
+.. automodule:: mrmp.conversions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.gui\_mrmp module
+---------------------
+
+.. automodule:: mrmp.gui_mrmp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.linear\_path\_intersection\_test module
+--------------------------------------------
+
+.. automodule:: mrmp.linear_path_intersection_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.mrmp module
+----------------
+
+.. automodule:: mrmp.mrmp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.ms\_polygon\_segment module
+--------------------------------
+
+.. automodule:: mrmp.ms_polygon_segment
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mrmp.read\_input module
+-----------------------
+
+.. automodule:: mrmp.read_input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: mrmp
+   :members:
+   :undoc-members:
+   :show-inheritance:
