@@ -64,34 +64,26 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
 
     # Sample landmarks
     i = 0
-    j = 0
+    r_x = (x_range[1] - x_range[0]) / 40
+    r_y = (y_range[1] - y_range[0]) / 40
+    r_z = (z_range[1] - z_range[0]) / 40
     while i < num_landmarks:
         rand_x = FT(random.uniform(x_range[0], x_range[1]))
         rand_y = FT(random.uniform(y_range[0], y_range[1]))
         rand_z = FT(random.uniform(z_range[0], z_range[1]))
         # If valid, add to the graph
-        if cd.is_rod_position_valid(rand_x, rand_y, rand_z, length):
-            p = Point_d(3, [rand_x, rand_y, rand_z])
-            G.add_node(p)
-            points.append(p)
-            i += 1
-            if i % 500 == 0:
-                print(i, "landmarks sampled", file=writer)
-        else:
-            r = (x_range[1] - x_range[0]) / 20
-            next_rand_x = FT(random.uniform(rand_x.to_double()-r, rand_x.to_double()+r))
-            next_rand_y = FT(random.uniform(rand_y.to_double()-r, rand_y.to_double()+r))
-            next_rand_z = FT(random.uniform(rand_z.to_double()-r, rand_z.to_double()+r))
+        if not cd.is_rod_position_valid(rand_x, rand_y, rand_z, length):
+            next_rand_x = FT(random.uniform(max(rand_x.to_double()-r_x, x_range[0]), min(rand_x.to_double()+r_x, x_range[1])))
+            next_rand_y = FT(random.uniform(max(rand_y.to_double()-r_y, y_range[0]), min(rand_y.to_double()+r_y, y_range[1])))
+            next_rand_z = FT(random.uniform(max(rand_z.to_double()-r_z, z_range[0]), min(rand_z.to_double()+r_z, z_range[1])))
             if cd.is_rod_position_valid(next_rand_x, next_rand_y, next_rand_z, length):
                 next_p = Point_d(3, [next_rand_x, next_rand_y, next_rand_z])
                 G.add_node(next_p)
                 points.append(next_p)
-                j += 1
                 i += 1
                 if i % 500 == 0:
                     print(i, "landmarks sampled", file=writer)
     print(num_landmarks, "landmarks sampled", file=writer)
-    print(j, "landmarks were sampled by gaussian", file=writer)
 
     # distance used for nearest neighbor search
     def custom_dist(p, q):
