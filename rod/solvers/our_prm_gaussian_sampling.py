@@ -73,9 +73,9 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
         rand_z = FT(random.uniform(z_range[0], z_range[1]))
         # If valid, add to the graph
         if not cd.is_rod_position_valid(rand_x, rand_y, rand_z, length):
-            next_rand_x = FT(random.uniform(max(rand_x.to_double()-r_x, x_range[0]), min(rand_x.to_double()+r_x, x_range[1])))
-            next_rand_y = FT(random.uniform(max(rand_y.to_double()-r_y, y_range[0]), min(rand_y.to_double()+r_y, y_range[1])))
-            next_rand_z = FT(random.uniform(max(rand_z.to_double()-r_z, z_range[0]), min(rand_z.to_double()+r_z, z_range[1])))
+            next_rand_x = FT(min(max(random.gauss(mu=rand_x.to_double(), sigma=r_x), x_range[0]),x_range[1]))
+            next_rand_y = FT(min(max(random.gauss(mu=rand_y.to_double(), sigma=r_y), y_range[0]),y_range[1]))
+            next_rand_z = FT(min(max(random.gauss(mu=rand_z.to_double(), sigma=r_z), z_range[0]),z_range[1]))
             if cd.is_rod_position_valid(next_rand_x, next_rand_y, next_rand_z, length):
                 next_p = Point_d(3, [next_rand_x, next_rand_y, next_rand_z])
                 G.add_node(next_p)
