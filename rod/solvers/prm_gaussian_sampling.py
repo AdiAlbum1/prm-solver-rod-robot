@@ -99,7 +99,8 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
     _points = np.array([point_d_to_arr(p) for p in points])
 
     # User defined metric cannot be used with the kd_tree algorithm
-    nearest_neighbors = sklearn.neighbors.NearestNeighbors(n_neighbors=K, metric=custom_dist, algorithm='auto')
+    _K = min(num_landmarks, K)
+    nearest_neighbors = sklearn.neighbors.NearestNeighbors(n_neighbors=_K, metric=custom_dist, algorithm='auto')
     # nearest_neighbors = sklearn.neighbors.NearestNeighbors(n_neighbors=K, algorithm='kd_tree')
     nearest_neighbors.fit(_points)
     # Try to connect neighbors
