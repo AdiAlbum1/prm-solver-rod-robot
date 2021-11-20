@@ -1,3 +1,5 @@
 # PyCharm files
 
 .idea/
+*/__pycache__/*
+rod/solvers/__pycache__/
