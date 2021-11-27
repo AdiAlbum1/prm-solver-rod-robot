@@ -87,8 +87,8 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
     print(num_landmarks, "landmarks sampled", file=writer)
     # ==== MAIN AREA OF OUR CODE - PRM_GAUSSIAN ====
 
-    # ==== MAIN AREA OF OUR CODE - DISTANCE 1 ====
     # distance used for nearest neighbor search
+    # ==== MAIN AREA OF OUR CODE - DISTANCE 1 ====
     def custom_dist(p, q):
         base_rod_position = [p[0], p[1], p[0] + length.to_double() * math.cos(p[2]), p[1] + length.to_double() * math.sin(p[2])]
         target_rod_position = [q[0], q[1], q[0] + length.to_double() * math.cos(q[2]), q[1] + length.to_double() * math.sin(q[2])]
