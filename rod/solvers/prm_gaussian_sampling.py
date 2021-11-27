@@ -62,6 +62,7 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
     # Initiate the collision detector
     cd = Collision_detector(polygons, [], epsilon)
 
+    # ==== MAIN AREA OF OUR CODE ====
     # Sample landmarks
     i = 0
     r_x = (x_range[1] - x_range[0]) / 40
@@ -84,6 +85,7 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
                 if i % 500 == 0:
                     print(i, "landmarks sampled", file=writer)
     print(num_landmarks, "landmarks sampled", file=writer)
+    # ==== MAIN AREA OF OUR CODE ====
 
     # distance used for nearest neighbor search
     def custom_dist(p, q):
