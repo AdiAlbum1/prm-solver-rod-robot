@@ -62,68 +62,31 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
     # Initiate the collision detector
     cd = Collision_detector(polygons, [], epsilon)
 
-    # ==== MAIN AREA OF OUR CODE - PRM_GAUSSIAN ====
     # Sample landmarks
     i = 0
-    r_x = (x_range[1] - x_range[0]) / 10
-    r_y = (y_range[1] - y_range[0]) / 10
-    r_z = (z_range[1] - z_range[0]) / 10
     while i < num_landmarks:
         rand_x = FT(random.uniform(x_range[0], x_range[1]))
         rand_y = FT(random.uniform(y_range[0], y_range[1]))
         rand_z = FT(random.uniform(z_range[0], z_range[1]))
+
         # If valid, add to the graph
-        if not cd.is_rod_position_valid(rand_x, rand_y, rand_z, length):
-            next_rand_x = FT(min(max(random.gauss(mu=rand_x.to_double(), sigma=r_x), x_range[0]),x_range[1]))
-            next_rand_y = FT(min(max(random.gauss(mu=rand_y.to_double(), sigma=r_y), y_range[0]),y_range[1]))
-            next_rand_z = FT(min(max(random.gauss(mu=rand_z.to_double(), sigma=r_z), z_range[0]),z_range[1]))
-            if cd.is_rod_position_valid(next_rand_x, next_rand_y, next_rand_z, length):
-                next_p = Point_d(3, [next_rand_x, next_rand_y, next_rand_z])
-                G.add_node(next_p)
-                points.append(next_p)
-                i += 1
-                if i % 500 == 0:
-                    print(i, "landmarks sampled", file=writer)
+        if cd.is_rod_position_valid(rand_x, rand_y, rand_z, length):
+            p = Point_d(3, [rand_x, rand_y, rand_z])
+            G.add_node(p)
+            points.append(p)
+            i += 1
+            if i % 500 == 0:
+                print(i, "landmarks sampled", file=writer)
     print(num_landmarks, "landmarks sampled", file=writer)
-    # ==== MAIN AREA OF OUR CODE - PRM_GAUSSIAN ====
-
-    # ==== MAIN AREA OF OUR CODE - DISTANCE 2 ====
-
-    # Given two angles theta_1, theta_2 in range [0, 2pi) and a direction (clockwise, or anti-clockwise),
-    # compute the distance between theta_1 and theta_2 in that direction. Result must be in range [0, 2pi)
-    def path_angular_dist(theta_1, theta_2, is_clockwise):
-        # calculate clockwise distnaces:
-        if theta_2 - theta_1 < -math.pi:
-            angular_dist = theta_1 - theta_2
-        elif theta_2 - theta_1 <= 0:
-            angular_dist = theta_1 - theta_2
-        elif theta_2 - theta_1 < math.pi:
-            angular_dist = 2*math.pi - theta_2 + theta_1
-        else:
-            angular_dist = 2*math.pi - theta_2 + theta_1
-
-        if not is_clockwise:
-            if angular_dist != 0:
-                angular_dist = 2 * math.pi - angular_dist
-
-        return abs(angular_dist)
 
     # distance used for nearest neighbor search
     def custom_dist(p, q):
-        rod_translational_dist = math.sqrt((p[0] - q[0])**2 + (p[1] - q[1])**2)
-        rod_rotational_dist = min(path_angular_dist(p[2], q[2], True), path_angular_dist(p[2], q[2], False))
-        w_t, w_r = 1, 1
-        weighted_dist = w_t * rod_translational_dist + w_r * rod_rotational_dist
-        return weighted_dist
+        sd = math.sqrt((p[0] - q[0])**2 + (p[1] - q[1])**2)
+        return sd
     
     # distance used to weigh the edges
-    def edge_weight(p, q, is_clockwise):
-        rod_translational_dist = math.sqrt((p[0] - q[0])**2 + (p[1] - q[1])**2)
-        rod_rotational_dist = path_angular_dist(p[2], q[2], is_clockwise)
-        w_t, w_r = 1, 1
-        weighted_dist = w_t * rod_translational_dist + w_r * rod_rotational_dist
-        return weighted_dist
-    # ==== MAIN AREA OF OUR CODE - DISTANCE 2 ====
+    def edge_weight(p, q):
+        return math.sqrt((p[0] - q[0])**2 + (p[1] - q[1])**2)
 
     # sklearn (which we use for nearest neighbor search) works with numpy array
     # of points represented as numpy arrays
@@ -150,7 +113,7 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
             for clockwise in (True, False):
                 # check if we can add an edge to the graph
                 if cd.is_rod_motion_valid(p, neighbor, clockwise, length):
-                    weight = edge_weight(point_d_to_arr(p), point_d_to_arr(neighbor), clockwise)
+                    weight = edge_weight(point_d_to_arr(p), point_d_to_arr(neighbor))
                     G.add_edge(p, neighbor, weight=weight, clockwise=clockwise)
                     break
         if i % 100 == 0:

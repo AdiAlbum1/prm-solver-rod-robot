@@ -65,9 +65,9 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
     # ==== MAIN AREA OF OUR CODE - PRM_GAUSSIAN ====
     # Sample landmarks
     i = 0
-    r_x = (x_range[1] - x_range[0]) / 20
-    r_y = (y_range[1] - y_range[0]) / 20
-    r_z = (z_range[1] - z_range[0]) / 20
+    r_x = (x_range[1] - x_range[0]) / 10
+    r_y = (y_range[1] - y_range[0]) / 10
+    r_z = (z_range[1] - z_range[0]) / 10
     while i < num_landmarks:
         rand_x = FT(random.uniform(x_range[0], x_range[1]))
         rand_y = FT(random.uniform(y_range[0], y_range[1]))
