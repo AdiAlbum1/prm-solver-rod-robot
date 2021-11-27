@@ -90,7 +90,7 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
     # ==== MAIN AREA OF OUR CODE - DISTANCE 2 ====
 
     # Given two angles theta_1, theta_2 in range [0, 2pi) and a direction (clockwise, or anti-clockwise),
-    # compute the distance between theta_2 and theta_1 in that direction. Result must be in range [0, 2pi)
+    # compute the distance between theta_1 and theta_2 in that direction. Result must be in range [0, 2pi)
     def path_angular_dist(theta_1, theta_2, is_clockwise):
         # calculate clockwise distnaces:
         if theta_2 - theta_1 < -math.pi:
