@@ -87,31 +87,43 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
     print(num_landmarks, "landmarks sampled", file=writer)
     # ==== MAIN AREA OF OUR CODE - PRM_GAUSSIAN ====
 
+    # ==== MAIN AREA OF OUR CODE - DISTANCE 2 ====
+
+    # Given two angles theta_1, theta_2 in range [0, 2pi) and a direction (clockwise, or anti-clockwise),
+    # compute the distance between theta_2 and theta_1 in that direction. Result must be in range [0, 2pi)
+    def path_angular_dist(theta_1, theta_2, is_clockwise):
+        # calculate clockwise distnaces:
+        if theta_2 - theta_1 < -math.pi:
+            angular_dist = theta_1 - theta_2
+        elif theta_2 - theta_1 <= 0:
+            angular_dist = theta_1 - theta_2
+        elif theta_2 - theta_1 < math.pi:
+            angular_dist = 2*math.pi - theta_2 + theta_1
+        else:
+            angular_dist = 2*math.pi - theta_2 + theta_1
+
+        if not is_clockwise:
+            if angular_dist != 0:
+                angular_dist = 2 * math.pi - angular_dist
+
+        return abs(angular_dist)
+
     # distance used for nearest neighbor search
-    # ==== MAIN AREA OF OUR CODE - DISTANCE 1 ====
     def custom_dist(p, q):
-        base_rod_position = [p[0], p[1], p[0] + length.to_double() * math.cos(p[2]), p[1] + length.to_double() * math.sin(p[2])]
-        target_rod_position = [q[0], q[1], q[0] + length.to_double() * math.cos(q[2]), q[1] + length.to_double() * math.sin(q[2])]
-
-        sd = math.sqrt((base_rod_position[0]-target_rod_position[0])**2 +
-                       (base_rod_position[1] - target_rod_position[1])**2 +
-                       (base_rod_position[2] - target_rod_position[2])**2 +
-                       (base_rod_position[3] - target_rod_position[3])**2)
-
-        return sd
+        rod_translational_dist = math.sqrt((p[0] - q[0])**2 + (p[1] - q[1])**2)
+        rod_rotational_dist = min(path_angular_dist(p[2], q[2], True), path_angular_dist(p[2], q[2], False))
+        w_t, w_r = 1, 1
+        weighted_dist = w_t * rod_translational_dist + w_r * rod_rotational_dist
+        return weighted_dist
     
     # distance used to weigh the edges
-    def edge_weight(p, q):
-        base_rod_position = [p[0], p[1], p[0] + length.to_double() * math.cos(p[2]), p[1] + length.to_double() * math.sin(p[2])]
-        target_rod_position = [q[0], q[1], q[0] + length.to_double() * math.cos(q[2]), q[1] + length.to_double() * math.sin(q[2])]
-
-        sd = math.sqrt((base_rod_position[0]-target_rod_position[0])**2 +
-                       (base_rod_position[1] - target_rod_position[1])**2 +
-                       (base_rod_position[2] - target_rod_position[2])**2 +
-                       (base_rod_position[3] - target_rod_position[3])**2)
-
-        return sd
-    # ==== MAIN AREA OF OUR CODE - DISTANCE 1 ====
+    def edge_weight(p, q, is_clockwise):
+        rod_translational_dist = math.sqrt((p[0] - q[0])**2 + (p[1] - q[1])**2)
+        rod_rotational_dist = path_angular_dist(p[2], q[2], is_clockwise)
+        w_t, w_r = 1, 1
+        weighted_dist = w_t * rod_translational_dist + w_r * rod_rotational_dist
+        return weighted_dist
+    # ==== MAIN AREA OF OUR CODE - DISTANCE 2 ====
 
     # sklearn (which we use for nearest neighbor search) works with numpy array
     # of points represented as numpy arrays
@@ -138,7 +150,7 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
             for clockwise in (True, False):
                 # check if we can add an edge to the graph
                 if cd.is_rod_motion_valid(p, neighbor, clockwise, length):
-                    weight = edge_weight(point_d_to_arr(p), point_d_to_arr(neighbor))
+                    weight = edge_weight(point_d_to_arr(p), point_d_to_arr(neighbor), clockwise)
                     G.add_edge(p, neighbor, weight=weight, clockwise=clockwise)
                     break
         if i % 100 == 0:
