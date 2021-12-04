@@ -149,6 +149,7 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
 
         return sd
 
+    # ==== MAIN AREA OF OUR CODE ====
     # Sample landmarks
     done_flag = False
     full_eta_counter = 0
@@ -186,7 +187,7 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
                         i += 1
             j -= 1
 
-        if i % 1000 == 0 and prev_i != i:
+        if i % 100 == 0 and prev_i != i:
             print("Running:", i, "landmarks sampled", file=writer)
             print("Eta histogram: ", eta_histogram, file=writer)
             prev_i = i
@@ -205,12 +206,10 @@ def generate_path(length, obstacles, origin, destination, argument, writer, isRu
                         G.add_edge(potential_point, end, weight=weight, clockwise=clockwise)
                         done_flag = True
                         break
-        if i % 100 == 0 and prev_i != i:
-            print("Running:", i, "landmarks sampled", file=writer)
-            prev_i = i
 
     print(i, "landmarks sampled", file=writer)
     print(done_flag)
+    # ==== MAIN AREA OF OUR CODE ====
 
     if nx.has_path(G, begin, end):
         shortest_path = nx.shortest_path(G, begin, end)
